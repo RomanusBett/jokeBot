@@ -1,0 +1,19 @@
+.app{
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffee;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botheader{
+    font-weight: 800;
+    margin-top: 5%;
+}
+.header_span{
+    font-weight: 450;
+}
