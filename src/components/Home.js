@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "./Button";
 import styles from './home.module.css'
@@ -10,17 +10,36 @@ import Jokes from "./jokes";
 
 const Home = () => {
     const [joke, setJoke] = useState('');
-    const[loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+
 
     const fetchJoke = () => {
         setLoading(true)
         axios.get('https://official-joke-api.appspot.com/jokes/random').then((response) => {
             setJoke(response.data)
-        }).catch((error)=>{
+        }).catch((error) => {
             console.log(error);
         })
         setLoading(false);
     };
+
+
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === 'j' || event.key === 'J') {
+                fetchJoke();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        return () => (
+            window.removeEventListener('keydown', handleKeyPress)
+        );
+    }, []);
+
 
     return (
         <div className={`${styles.app} ${styles.home}`}>
