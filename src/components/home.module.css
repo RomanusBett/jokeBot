@@ -17,3 +17,16 @@
 .header_span{
     font-weight: 450;
 }
+
+.jokeContainer{
+    margin-top: 1%;
+    justify-content: center;
+}
+
+.setup{
+    font-weight: 505;
+    font-size: 1.5rem;
+}
+.punchline{
+    font-weight: 800;
+}
