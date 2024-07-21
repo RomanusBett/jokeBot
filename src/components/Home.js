@@ -14,6 +14,7 @@ const Home = () => {
 
 
 
+
     const fetchJoke = () => {
         setLoading(true)
         axios.get('https://official-joke-api.appspot.com/jokes/random').then((response) => {
@@ -23,6 +24,25 @@ const Home = () => {
         })
         setLoading(false);
     };
+
+
+    useEffect(()=>{
+        const speak = ()=>{
+            console.log(joke);
+            if('speechSynthesis' in window){
+                if (joke){
+                    const speech = new SpeechSynthesisUtterance(`${joke.setup} ${joke.punchline}`);
+                    window.speechSynthesis.speak(speech);
+                }
+            }
+            else{
+                alert(
+                    'Your browser does not support text to speech'
+                )
+            }
+        }
+        speak()
+    }, [joke]);
 
 
 

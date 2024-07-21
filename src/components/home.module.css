@@ -20,6 +20,8 @@
 
 .jokeContainer{
     margin-top: 1%;
+    width: 90%;
+    text-align: center;
     justify-content: center;
 }
 
